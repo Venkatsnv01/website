@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google Doc Website</title>
+</head>
+<body>
+  <div id="content"></div>
+  <script>
+    fetch('https://docs.google.com/document/d/1iGuyuhlFjy935PXNJQwFCIp0ac7trEmTmfqLmiA0Y8k/export?format=txt')
+    .then(response => response.text())
+    .then(data => document.getElementById('content').innerText = data)
+    .catch(error => console.error('Error:', error));
+  </script>
+</body>
+</html>
