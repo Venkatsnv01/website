@@ -6,7 +6,7 @@
 <body>
   <div id="content"></div>
   <script>
-    fetch('https://docs.google.com/document/d/1iGuyuhlFjy935PXNJQwFCIp0ac7trEmTmfqLmiA0Y8k/export?format=txt')
+    fetch('https://docs.google.com/document/d/1iGuyuhlFjy935PXNJQwFCIp0ac7trEmTmfqLmiA0Y8k/export?format=html')
     .then(response => response.text())
     .then(data => document.getElementById('content').innerText = data)
     .catch(error => console.error('Error:', error));
