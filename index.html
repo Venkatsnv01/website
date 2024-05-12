@@ -2,13 +2,23 @@
 <html>
 <head>
   <title>Google Doc Website</title>
+  <style>
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
 </head>
 <body>
   <div id="content"></div>
   <script>
     fetch('https://docs.google.com/document/d/1iGuyuhlFjy935PXNJQwFCIp0ac7trEmTmfqLmiA0Y8k/export?format=html')
     .then(response => response.text())
-    .then(data => document.getElementById('content').innerText = data)
+    .then(data => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(data, 'text/html');
+      document.getElementById('content').innerHTML = doc.body.innerHTML;
+    })
     .catch(error => console.error('Error:', error));
   </script>
 </body>
